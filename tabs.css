@@ -1,0 +1,30 @@
+body { width: 300px; margin: 2px}
+h1 { font: 25px Georgia,Serif; margin: 0 0 10px 10px; }
+.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+p { margin: 0 0 10px 0; }
+
+.tabs { list-style: none; }
+.tabs li { display: inline; }
+.tabs li a { color: black; float: left; display: block; padding: 4px 21px; margin-left: -1px; position: relative; left: -29px; background: white; text-decoration: none; }
+#newstab:hover { color:white; background: #D61D00; }
+#foottab:hover { color:white; background: #008000; }
+#travtab:hover { color:white; background: #066EC9; }
+#news:target, #football:target, #travel:target { z-index: 1; }
+
+
+.tabbed-area { margin: 0 0 0 0; }
+.box-wrap { position: relative; min-height: 250px; }
+.tabbed-area div div { background: white; min-height: 250px; position: absolute; top: -17px; left: 10px; width: 100%; }
+.tabbed-area div div, .tabs li a { border: 1px solid #ccc; }
+
+
+
+.tabbody { min-height: 250px; position: relative; width: 100%; }
+.tabbody > div { display: inline; }
+.tabbody > div > ol > li > a { position: relative; text-decoration: none; color: black; background: #008000; }
+.tabbody > div > ol > li > p { position: relative; color: black; background: white; }
+.tabbody > div:not(:target) > a { border-bottom: 100px; background: -moz-linear-gradient(top, white, #eee); }
+.tabbody > div:target > a { background: white; }
+.tabbody > div > div { background: white; z-index: -2; left: 0; top: 30px; bottom: 0; right: 0; padding: 20px; border: 1px solid #ccc; }
+.tabbody > div:not(:target) > div { position: absolute }
+.tabbody > div:target > div { position: absolute; z-index: -1; }
