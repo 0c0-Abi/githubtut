@@ -1,19 +1,88 @@
 <!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Git Hub tuts</title>
+    <title>Tabs</title>
+    <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
   </head>
-  <body>
-    <style media="screen">
-      background-color: #0a0a0a;
-      font-family: Helvetica;
-    </style>
-    <h1>Github Tuts</h1>
-    <p>
-      This is a test for github. We will be learning the basics of github and maybe something a little more advanced.
-      It's getting interesting now - forking!
-      And send a pull request
-    </p>
-  </body>
+
+<body>
+  <h1><span style="color:#B3C8D9;">the</span><span style="color:#00528C;">guardian</span> in short
+  </h1>
+
+<div class="tabbed-area">
+
+	<ul class="tabs group">
+	    <li><a id="newstab" href="#news">News</a></li>
+	    <li><a id="foottab" href="#football">Football</a></li>
+	    <li><a id="travtab" href="#travel">Travel</a></li>
+	</ul>
+
+	<div class="tabbody">
+
+		<div id="news">
+		  <!-- box two content -->
+      <span id="nojsnews"><a href="#news">News @theguardian</a></span>
+      <ol id="ncontent" class="news"></ol>
+		</div>
+
+		<div id="football">
+		  <!-- box two content -->
+      <span id="nojsfoot"><a href="#news">Football @theguardian</a></span>
+      <ol id="fcontent" class="news"></ol>
+		</div>
+
+		<div id="travel">
+		  <!-- box two content -->
+      <span id="nojstrav"><a href="#news">Travel @theguardian</a></span>
+      <ol id="tcontent" class="news"></ol>
+		</div>
+
+	</div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script charset="utf-8">
+  $(document).ready(function() {
+  $.ajax({
+  type: "GET",
+  dataType: "jsonp",
+  cache: false,
+  url: "http://content.guardianapis.com/search?section=news&show-fields=all",
+  success: function(data) {
+      for (var i = 0; i < data.response.results.length; i++) {
+      $("#ncontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
+          }
+          console.log(data);
+      }
+  });
+  $.ajax({
+  type: "GET",
+  dataType: "jsonp",
+  cache: false,
+  url: "http://content.guardianapis.com/search?section=football&show-fields=all",
+  success: function(data) {
+      for (var i = 0; i < data.response.results.length; i++) {
+      $("#fcontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
+          }
+          console.log(data);
+      }
+  });
+  $.ajax({
+  type: "GET",
+  dataType: "jsonp",
+  cache: false,
+  url: "http://content.guardianapis.com/search?section=travel&show-fields=all",
+  success: function(data) {
+      for (var i = 0; i < data.response.results.length; i++) {
+      $("#tcontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
+          }
+          console.log(data);
+      }
+  });
+})
+</script>
+
 </html>
