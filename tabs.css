@@ -36,7 +36,14 @@ p { margin: 0 0 10px 0; }
 .tabbody > div:not(:target) { display:none; }
 
 /*For browser/screen widths less than 768px*/
-@media screen and (max-width: 770px) {
-
+@media screen and (max-width: 768px) {
     body { width: 300px; margin: 2px}
 }
+
+/* Smartphones (portrait and landscape)*/
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    body { width: 300px; margin: 2px}
+}
+
