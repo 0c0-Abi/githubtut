@@ -1,88 +1,128 @@
-<!DOCTYPE html>
-
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Tabs</title>
-    <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
-  </head>
+<head>
+  <title>Tabs</title>
+  <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
+</head>
 
 <body>
   <h1><span style="color:#B3C8D9;">the</span><span style="color:#00528C;">guardian</span> in short
   </h1>
 
-<div class="tabbed-area">
+  <div class="tabbed-area">
 
-	<ul class="tabs group">
-	    <li><a id="newstab" href="#news">News</a></li>
-	    <li><a id="foottab" href="#football">Football</a></li>
-	    <li><a id="travtab" href="#travel">Travel</a></li>
-	</ul>
+    <ul class="tabs group">
+      <li><a id="newstab" href="#tabn">News</a></li>
+      <li><a id="foottab" href="#tabf">Football</a></li>
+      <li><a id="travtab" href="#tabt">Travel</a></li>
+    </ul>
 
-	<div class="tabbody">
+    <div class="tabbody">
 
-		<div id="news">
-		  <!-- box two content -->
-      <span id="nojsnews"><a href="#news">News @theguardian</a></span>
-      <ol id="ncontent" class="news"></ol>
-		</div>
+      <div id="tabn">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/uk">News @theguardian</a></span>
+        <ol id="news" class="news"></ol>
+      </div>
 
-		<div id="football">
-		  <!-- box two content -->
-      <span id="nojsfoot"><a href="#news">Football @theguardian</a></span>
-      <ol id="fcontent" class="news"></ol>
-		</div>
+      <div id="tabf">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/football">Football @theguardian</a></span>
+        <ol id="football" class="news"></ol>
+      </div>
 
-		<div id="travel">
-		  <!-- box two content -->
-      <span id="nojstrav"><a href="#news">Travel @theguardian</a></span>
-      <ol id="tcontent" class="news"></ol>
-		</div>
+      <div id="tabt">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/travel">Travel @theguardian</a></span>
+        <ol id="travel" class="news"></ol>
+      </div>
 
-	</div>
+    </div>
 
-</div>
+  </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script charset="utf-8">
-  $(document).ready(function() {
-  $.ajax({
-  type: "GET",
-  dataType: "jsonp",
-  cache: false,
-  url: "http://content.guardianapis.com/search?section=news&show-fields=all",
-  success: function(data) {
-      for (var i = 0; i < data.response.results.length; i++) {
-      $("#ncontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
-          }
-          console.log(data);
-      }
-  });
-  $.ajax({
-  type: "GET",
-  dataType: "jsonp",
-  cache: false,
-  url: "http://content.guardianapis.com/search?section=football&show-fields=all",
-  success: function(data) {
-      for (var i = 0; i < data.response.results.length; i++) {
-      $("#fcontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
-          }
-          console.log(data);
-      }
-  });
-  $.ajax({
-  type: "GET",
-  dataType: "jsonp",
-  cache: false,
-  url: "http://content.guardianapis.com/search?section=travel&show-fields=all",
-  success: function(data) {
-      for (var i = 0; i < data.response.results.length; i++) {
-      $("#tcontent").append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
-          }
-          console.log(data);
-      }
-  });
-})
-</script>
 
-</html>
+<html>
+
+<!-- codigo viejo
+
+<head>
+  <title>Tabs</title>
+  <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
+</head>
+
+<body>
+  <h1><span style="color:#B3C8D9;">the</span><span style="color:#00528C;">guardian</span> in short
+  </h1>
+
+  <div class="tabbed-area">
+
+    <ul class="tabs group">
+      <li><a id="newstab" href="#tab-1">News</a></li>
+      <li><a id="foottab" href="#tab-2">Football</a></li>
+      <li><a id="travtab" href="#tab-3">Travel</a></li>
+    </ul>
+
+    <div class="tabbody">
+
+      <div id="tab-1">
+
+        <span class="nojs"><a href="http://www.theguardian.com/uk">News @theguardian</a></span>
+        <ol id="news" class="news"></ol>
+      </div>
+
+      <div id="tab-2">
+
+        <span class="nojs"><a href="http://www.theguardian.com/football">Football @theguardian</a></span>
+        <ol id="football" class="news"></ol>
+      </div>
+
+      <div id="tab-3">
+
+        <span class="nojs"><a href="http://www.theguardian.com/travel">Travel @theguardian</a></span>
+        <ol id="travel" class="news"></ol>
+      </div>
+
+    </div>
+
+  </div>
+hasta aca -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script charset="utf-8">
+        var list = {'1':"news", '2':"football", '3':"travel"};
+        $(document).ready (function() {
+          $(".nojs").hide();
+          $.each (list, function(key, value) {
+            $.ajax({
+              type: "GET",
+              dataType: "jsonp",
+              cache: false,
+              url: "http://content.guardianapis.com/search?section="+ value +"&show-fields=all",
+              success: function(data) {
+                $.each(data.response.results, function () {
+                  $( "#" + value ).append('<li><a target="_blank" href="' + this['webUrl'] + '">' + this['webTitle'] +'</a><p>' + this['fields'].trailText + '</p></li>');
+
+                })
+              }
+            })
+          })
+        })
+    </script>
+
+
+<!-- f = function (item) {
+    $.ajax({
+        type: "GET",
+        dataType: "jsonp",
+        cache: false,
+        url: "http://content.guardianapis.com/search?section=news&show-fields=all",
+        success: function (data) {
+            console.log("#" + f);
+            for (i = 0; i < data.response.results.length; i += 1) {
+                $("#" + f).append("<li class='guardian'><a target='_blank' href=" + data.response.results[i].webUrl + ">" + data.response.results[i].webTitle + "</a> <p> " + data.response.results[i].fields.trailText + "</p></li>");
+            }
+            console.log(data);
+        }
+    });
+};     -->
