@@ -4,7 +4,7 @@
 <meta charset="utf-8">
   <title>The Guardian in short</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="acidTabs.js"></script>
+  <script type="text/javascript" src="acidTabs.js"></script>
   <noscript>
     <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
   </noscript>
@@ -18,9 +18,9 @@
 
     <div class="tabs">
       <ul class="group">
-        <li id="tabHeader_1"><a id="newstab" href="#tabpage_1">News</a></li>
-        <li id="tabHeader_2"><a id="foottab" href="#tabpage_2">Football</a></li>
-        <li id="tabHeader_3"><a id="travtab" href="#tabpage_3">Travel</a></li>
+        <li id="tabHeader_1"><a class="cssnojs" id="newstab" href="#tabpage_1">UK News</a></li>
+        <li id="tabHeader_2"><a class="cssnojs" id="foottab" href="#tabpage_2">Football</a></li>
+        <li id="tabHeader_3"><a class="cssnojs" id="travtab" href="#tabpage_3">Travel</a></li>
       </ul>
     </div>
 
@@ -58,15 +58,17 @@
         $(document).ready (function() {
           $('head').append('<link rel="stylesheet" href="tabsjs.css" media="screen" charset="utf-8">/>');
           $(".nojs").hide();
+          $( ".cssnojs" ).removeAttr('href');
           $.each (list, function(key, value) {
             $.ajax({
               type: "GET",
               dataType: "jsonp",
               cache: false,
-              url: "http://content.guardianapis.com/search?section="+ value +"&show-fields=all",
+              url: "http://content.guardianapis.com/search?section="+ value +"&show-fields=trailText%2CshortUrl",
               success: function(data) {
                 $.each(data.response.results, function () {
-                 $( "#" + value ).append('<li><a target="_blank" href="' + this['fields'].shortUrl + '">' + this['webTitle'] +'</a><p>' + this['fields'].trailText + '</p></li>');
+                  $( "#" + value ).append('<li><a target="_blank" href="' + this['fields'].shortUrl + '">' + this['webTitle'] +'</a><p>' + this['fields'].trailText + '</p></li>');
+
                 })
               }
             })
