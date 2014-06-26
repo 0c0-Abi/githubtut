@@ -16,6 +16,7 @@ p { margin: 0 0 10px 0; }
 #travtab:hover { color:white; background: #066EC9; }
 #tabpage_1:target, #tabpage_2:target, #tabpage_3:target { z-index: 1; }
 
+.group { font-weight:bold; }
 
 .tabbed-area { margin: 0 0 0 0; }
 .box-wrap { position: relative; min-height: 250px; }
