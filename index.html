@@ -1,13 +1,27 @@
+<<<<<<< HEAD
 <html>
 <head>
   <title>Tabs</title>
   <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
+=======
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>The Guardian in short</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/acidTabs.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
+  </noscript>
+>>>>>>> origin/master
 </head>
 
 <body>
   <h1><span style="color:#B3C8D9;">the</span><span style="color:#00528C;">guardian</span> in short
   </h1>
 
+<<<<<<< HEAD
   <div class="tabbed-area">
 
     <ul class="tabs group">
@@ -34,6 +48,36 @@
         <!-- box two content -->
         <span class="nojs"><a href="http://www.theguardian.com/travel">Travel @theguardian</a></span>
         <ol id="travel" class="news"></ol>
+=======
+  <div id= "tabContainer" class="tabbed-area">
+
+    <div class="tabs">
+      <ul class="group">
+        <li id="tabHeader_1"><a id="newstab" href="#tabpage_1">News</a></li>
+        <li id="tabHeader_2"><a id="foottab" href="#tabpage_2">Football</a></li>
+        <li id="tabHeader_3"><a id="travtab" href="#tabpage_3">Travel</a></li>
+      </ul>
+    </div>
+
+    <div class="tabbody tabscontent">
+
+      <div class="tabpage" id="tabpage_1">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/uk"><img src="newsnojs.png" alt="Travel" /><br>News @theguardian</br></a></span>
+        <ol id="news" class="news"></ol>
+      </div>
+
+      <div class="tabpage" id="tabpage_2">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/football"><img src="footballnojs.jpg" alt="Travel" /><br>Football @theguardian</br></a></span>
+        <ol id="football" class="foot"></ol>
+      </div>
+
+      <div class="tabpage" id="tabpage_3">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/travel"><img src="travelnojs.jpg" alt="Travel" /><br>Travel @theguardian</br></a></span>
+        <ol id="travel" class="trav"></ol>
+>>>>>>> origin/master
       </div>
 
     </div>
@@ -43,6 +87,7 @@
 
 <html>
 
+<<<<<<< HEAD
 <!-- codigo viejo
 
 <head>
@@ -88,10 +133,17 @@
 hasta aca -->
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+=======
+
+>>>>>>> origin/master
 
   <script charset="utf-8">
         var list = {'1':"news", '2':"football", '3':"travel"};
         $(document).ready (function() {
+<<<<<<< HEAD
+=======
+          $('head').append('<link rel="stylesheet" href="tabsjs.css" media="screen" charset="utf-8">/>');
+>>>>>>> origin/master
           $(".nojs").hide();
           $.each (list, function(key, value) {
             $.ajax({
@@ -107,6 +159,7 @@ hasta aca -->
               }
             })
           })
+<<<<<<< HEAD
         })
     </script>
 
@@ -126,3 +179,8 @@ hasta aca -->
         }
     });
 };     -->
+=======
+          $("#tabContainer").acidTabs();
+        })
+    </script>
+>>>>>>> origin/master
