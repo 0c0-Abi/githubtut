@@ -1,60 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>The Guardian in short</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="acidTabs.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="tabs.css" media="screen" charset="utf-8">
+  </noscript>
+</head>
 
-body { width: 900px; margin: 2px auto}
-<<<<<<< HEAD
-h1 { font: 25px Georgia,Sans-Serif; margin: 0 0 10px 10px; }
-=======
-h1 { font: 25px Georgia,Serif; margin: 0 0 10px 10px; }
->>>>>>> origin/master
-.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-p { margin: 0 0 10px 0; }
+<body>
+  <h1><span style="color:#B3C8D9;">the</span><span style="color:#00528C;">guardian</span> in short
+  </h1>
 
-.tabs { list-style: none; }
-.tabs li { display: inline; }
-.tabs li a { color: black; float: left; display: block; padding: 4px 21px; margin-left: -1px; position: relative; left: -29px; background: white; text-decoration: none; }
-#newstab { color:#D61D00; }
-#foottab { color:#008000; }
-#travtab { color:#066EC9; }
+  <div id= "tabContainer" class="tabbed-area">
 
-#newstab:hover { color:white; background: #D61D00; }
-#foottab:hover { color:white; background: #008000; }
-#travtab:hover { color:white; background: #066EC9; }
-<<<<<<< HEAD
-#tabpage_1:target, #tabpage_2:target, #tabpage_3:target { z-index: 1; }
-=======
-#tabn:target, #tabf:target, #tabt:target { z-index: 1; }
->>>>>>> origin/master
+    <div class="tabs">
+      <ul class="group">
+        <li id="tabHeader_1"><a id="newstab" href="#tabpage_1">News</a></li>
+        <li id="tabHeader_2"><a id="foottab" href="#tabpage_2">Football</a></li>
+        <li id="tabHeader_3"><a id="travtab" href="#tabpage_3">Travel</a></li>
+      </ul>
+    </div>
+
+    <div class="tabbody tabscontent">
+
+      <div class="tabpage" id="tabpage_1">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/uk"><img src="newsnojs.png" alt="Travel" /><br>News @theguardian</br></a></span>
+        <ol id="news" class="news"></ol>
+      </div>
+
+      <div class="tabpage" id="tabpage_2">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/football"><img src="footballnojs.jpg" alt="Travel" /><br>Football @theguardian</br></a></span>
+        <ol id="football" class="foot"></ol>
+      </div>
+
+      <div class="tabpage" id="tabpage_3">
+        <!-- box two content -->
+        <span class="nojs"><a href="http://www.theguardian.com/travel"><img src="travelnojs.jpg" alt="Travel" /><br>Travel @theguardian</br></a></span>
+        <ol id="travel" class="trav"></ol>
+      </div>
+
+    </div>
+
+  </div>
 
 
-.tabbed-area { margin: 0 0 0 0; }
-.box-wrap { position: relative; min-height: 250px; }
-.tabbed-area div div { background: white; min-height: 250px; position: absolute; top: -17px; left: 10px; width: 100%; }
-.tabbed-area div div, .tabs li a { border: 1px solid #ccc; }
+<html>
 
 
 
-.tabbody { min-height: 250px; position: relative; width: 100%; }
-.tabbody > div { display: inline; }
-.tabbody > div > ol > li > a { position: relative; text-decoration: none; color: black; background: #fff; }
-.tabbody > div > ol > li > p { position: relative; color: black; background: white; }
-.tabbody > div:not(:target) > a { border-bottom: 100px; color:white; background: -moz-linear-gradient(top, white, #eee); }
-.tabbody > div:target > a { background: white; }
-.tabbody > div > div { background: white; z-index: -2; left: 0; top: 30px; bottom: 0; right: 0; padding: 20px; border: 1px solid #ccc; }
-.tabbody > div:not(:target) > div { position: absolute }
-.tabbody > div:target > div { position: absolute; z-index: -1; }
-.tabbody > div:not(:target) { display:none; }
+  <script charset="utf-8">
+        var list = {'1':"news", '2':"football", '3':"travel"};
+        $(document).ready (function() {
+          $('head').append('<link rel="stylesheet" href="tabsjs.css" media="screen" charset="utf-8">/>');
+          $(".nojs").hide();
+          $.each (list, function(key, value) {
+            $.ajax({
+              type: "GET",
+              dataType: "jsonp",
+              cache: false,
+              url: "http://content.guardianapis.com/search?section="+ value +"&show-fields=all",
+              success: function(data) {
+                $.each(data.response.results, function () {
+                  $( "#" + value ).append('<li><a target="_blank" href="' + this['webUrl'] + '">' + this['webTitle'] +'</a><p>' + this['fields'].trailText + '</p></li>');
 
-/*For browser/screen widths less than 768px*/
-@media screen and (max-width: 768px) {
-
-    body { width: 300px; margin: 2px}
-}
-<<<<<<< HEAD
-
-/* Smartphones (portrait and landscape)*/
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-    body { width: 300px; margin: 2px}
-}
-=======
->>>>>>> origin/master
+                })
+              }
+            })
+          })
+          $("#tabContainer").acidTabs();
+        })
+    </script>
