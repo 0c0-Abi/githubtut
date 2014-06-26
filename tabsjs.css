@@ -119,6 +119,10 @@ a {
   text-decoration: none;
 }
 
+.cssnojs {
+	font-weight:bold;	
+}
+
 .news a {
   color:#D61D00;
   font-weight:bold;
