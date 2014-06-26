@@ -1,6 +1,6 @@
 
 body { width: 900px; margin: 2px auto}
-h1 { font: 25px Georgia,Serif; margin: 0 0 10px 10px; }
+h1 { font: 25px Georgia,Sans-Serif; margin: 0 0 10px 10px; }
 .group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 p { margin: 0 0 10px 0; }
 
@@ -14,7 +14,7 @@ p { margin: 0 0 10px 0; }
 #newstab:hover { color:white; background: #D61D00; }
 #foottab:hover { color:white; background: #008000; }
 #travtab:hover { color:white; background: #066EC9; }
-#tabn:target, #tabf:target, #tabt:target { z-index: 1; }
+#tabpage_1:target, #tabpage_2:target, #tabpage_3:target { z-index: 1; }
 
 
 .tabbed-area { margin: 0 0 0 0; }
@@ -37,6 +37,7 @@ p { margin: 0 0 10px 0; }
 
 /*For browser/screen widths less than 768px*/
 @media screen and (max-width: 768px) {
+
     body { width: 300px; margin: 2px}
 }
 
@@ -46,4 +47,3 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
     body { width: 300px; margin: 2px}
 }
-
